@@ -322,7 +322,7 @@
 
     .nav-controls { bottom: 16px; padding: 6px 16px; }
 
-    #globe-container { opacity: 0.5; }
+    #globe-container { opacity: 1; }
   }
 
   /* ── Print / PDF Export ── */
@@ -482,7 +482,7 @@
   var globeRadius = 80;
   var geometry = new THREE.SphereGeometry(globeRadius, 32, 32);
   var wireframe = new THREE.WireframeGeometry(geometry);
-  var lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.06 });
+  var lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.12 });
   var sphereLine = new THREE.LineSegments(wireframe, lineMaterial);
   scene.add(sphereLine);
 
@@ -517,7 +517,7 @@
   });
 
   // Arc connections
-  var arcMaterial = new THREE.LineBasicMaterial({ color: 0xD4AF37, transparent: true, opacity: 0.25 });
+  var arcMaterial = new THREE.LineBasicMaterial({ color: 0xD4AF37, transparent: true, opacity: 0.4 });
   var activeArcs = [];
 
   function createArc(startHub, endHub) {
