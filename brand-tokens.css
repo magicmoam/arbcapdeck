@@ -1,0 +1,159 @@
+/* ============================================================
+   ARB CAPITAL — BRAND DESIGN TOKENS
+   Shared foundation for all brand deliverables.
+   Extracted from app/globals.css + brand brainstorm decisions.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  /* ── Core Palette ── */
+  --color-bg:               #F5F5F0;
+  --color-surface:          #F5F5F0;
+  --color-surface-elevated: #ECECE7;
+  --color-border:           #D1D1CB;
+  --color-text-primary:     #0D0D0D;
+  --color-text-secondary:   #8A8A8A;
+  --color-text-tertiary:    #A3A39E;
+  --color-text-white:       #F5F5F0;
+
+  /* ── Gold Accent ── */
+  --color-gold:             #D4AF37;
+  --color-gold-dark:        #B8941B;
+  --color-gold-light:       #E6C44A;
+
+  /* ── Semantic ── */
+  --color-success:          #2D5A27;
+  --color-error:            #B91C1C;
+  --color-warning:          #92400E;
+
+  /* ── Asset Colors ── */
+  --color-asset-usdc:       #1E40AF;
+  --color-asset-usdt:       #2D5A27;
+  --color-asset-dai:        #92400E;
+  --color-asset-eth:        #5B21B6;
+  --color-asset-wbtc:       #C2410C;
+
+  /* ── Typography ── */
+  --font-sans:              'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono:              'Space Mono', SFMono-Regular, Menlo, Monaco, monospace;
+
+  /* ── Shadows ── */
+  --shadow-soft:            0 4px 20px -8px rgba(0, 0, 0, 0.08);
+  --shadow-strong:          0 8px 30px -12px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Base Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+p { color: var(--color-text-secondary); }
+
+a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+a:hover { opacity: 0.7; }
+
+::selection {
+  background: var(--color-text-primary);
+  color: #ffffff;
+}
+
+/* ── Utility Classes ── */
+.mono {
+  font-family: var(--font-mono);
+}
+
+.btn-portal {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid var(--color-text-primary);
+  padding: 8px 16px;
+  background: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-portal:hover {
+  background: var(--color-text-primary);
+  color: var(--color-text-white);
+}
+
+.btn-gold {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid var(--color-gold);
+  padding: 8px 16px;
+  background: transparent;
+  color: var(--color-gold);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-gold:hover {
+  background: var(--color-gold);
+  color: var(--color-bg);
+}
+
+/* ── Bracket Corners ── */
+.bracket-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--color-text-primary);
+  border-style: solid;
+  opacity: 0.2;
+}
+.bl-tl { top: 0; left: 0; border-width: 1px 0 0 1px; }
+.bl-tr { top: 0; right: 0; border-width: 1px 1px 0 0; }
+.bl-br { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
+.bl-bl { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
+
+/* ── Stat Card ── */
+.stat-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: 24px;
+  position: relative;
+}
+
+/* ── Health Bar ── */
+.health-bar-bg {
+  height: 4px;
+  background: var(--color-border);
+  width: 100%;
+}
+.health-bar-fill {
+  height: 100%;
+  background: var(--color-text-primary);
+}
+
+/* ── Print Overrides ── */
+@media print {
+  body {
+    background: #ffffff;
+    color: #000000;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .no-print { display: none !important; }
+  .bracket-corner { opacity: 0.15; }
+}

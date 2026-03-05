@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arb Capital — Document Templates</title>
+<link rel="stylesheet" href="brand-tokens.css">
+<style>
+  body { padding: 40px; cursor: default; }
+
+  /* ── Template Navigator ── */
+  .nav-bar {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-bar a {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--color-text-secondary);
+    padding: 6px 12px;
+    border: 1px solid var(--color-border);
+    transition: all 0.2s;
+  }
+  .nav-bar a:hover {
+    border-color: var(--color-text-primary);
+    color: var(--color-text-primary);
+    opacity: 1;
+  }
+
+  /* ── Template Frame ── */
+  .template-section {
+    max-width: 900px;
+    margin: 0 auto 80px;
+  }
+  .template-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.12em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .template-label .divider {
+    height: 1px;
+    width: 24px;
+    background: var(--color-border);
+  }
+
+  /* ── Paper Frame ── */
+  .paper {
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-soft);
+    position: relative;
+  }
+
+  /* ══════════════════════════
+     LETTERHEAD
+     ══════════════════════════ */
+  .letterhead {
+    padding: 60px;
+    min-height: 1100px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lh-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 48px;
+  }
+  .lh-logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .lh-logo img {
+    width: 36px;
+    height: 36px;
+  }
+  .lh-logo .lh-name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-text-primary);
+  }
+  .lh-info {
+    text-align: right;
+  }
+  .lh-info div {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.06em;
+    line-height: 1.8;
+  }
+
+  .lh-body {
+    flex: 1;
+  }
+  .lh-date {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.06em;
+    margin-bottom: 32px;
+  }
+  .lh-recipient {
+    margin-bottom: 32px;
+  }
+  .lh-recipient div {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+  }
+  .lh-content {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--color-text-primary);
+  }
+  .lh-content p {
+    color: var(--color-text-primary);
+    margin-bottom: 16px;
+  }
+  .lh-signature {
+    margin-top: 48px;
+  }
+  .lh-signature .sig-line {
+    width: 200px;
+    height: 1px;
+    background: var(--color-border);
+    margin-bottom: 8px;
+  }
+  .lh-signature .sig-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+  .lh-signature .sig-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+  }
+
+  .lh-footer {
+    border-top: 1px solid var(--color-border);
+    padding-top: 16px;
+    margin-top: 48px;
+  }
+  .lh-footer p {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+  }
+
+  /* ══════════════════════════
+     ONE-PAGER
+     ══════════════════════════ */
+  .one-pager {
+    padding: 60px;
+    min-height: 1100px;
+    position: relative;
+  }
+
+  .op-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .op-header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .op-header-left img { width: 40px; height: 40px; }
+  .op-header-left .op-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+  .op-header-right {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.08em;
+    text-align: right;
+  }
+
+  .op-hero {
+    margin-bottom: 40px;
+  }
+  .op-hero h1 {
+    font-size: 2.2rem;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+  .op-hero h1 span { color: var(--color-gold); }
+  .op-hero p {
+    font-size: 15px;
+    max-width: 480px;
+    line-height: 1.6;
+  }
+
+  .op-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  .op-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .op-metric {
+    border: 1px solid var(--color-border);
+    padding: 16px;
+    position: relative;
+  }
+  .op-metric .bracket-corner { width: 8px; height: 8px; }
+  .op-metric .m-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  .op-metric .m-value {
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+  }
+
+  .op-section {
+    margin-bottom: 24px;
+  }
+  .op-section .s-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--color-gold);
+    margin-bottom: 8px;
+  }
+  .op-section h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .op-section p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .op-footer {
+    border-top: 1px solid var(--color-border);
+    padding-top: 16px;
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    right: 60px;
+  }
+  .op-footer p {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+  }
+
+  /* ── Placeholder ── */
+  .placeholder {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--color-warning);
+    letter-spacing: 0.06em;
+    padding: 2px 6px;
+    border: 1px dashed var(--color-warning);
+    display: inline-block;
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { padding: 0; background: #ffffff; }
+    .nav-bar { display: none; }
+    .template-label { display: none; }
+    .paper {
+      box-shadow: none;
+      border: none;
+      page-break-after: always;
+    }
+    .paper:last-child { page-break-after: auto; }
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav-bar no-print">
+  <span class="mono" style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em;">[ ARB CAPITAL ] — TEMPLATES</span>
+  <div style="display: flex; gap: 8px;">
+    <a href="#letterhead">LETTERHEAD</a>
+    <a href="#one-pager">ONE_PAGER</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     TEMPLATE 1: LETTERHEAD
+     ═══════════════════════════════════════ -->
+<div class="template-section" id="letterhead">
+  <div class="template-label">
+    <span>[ 01 ]</span>
+    <span class="divider"></span>
+    <span>LETTERHEAD</span>
+  </div>
+
+  <div class="paper">
+    <div class="letterhead">
+      <!-- Header -->
+      <div class="lh-header">
+        <div class="lh-logo">
+          <img src="assets/logo-gold.svg" alt="Arb Capital">
+          <span class="lh-name">ARB CAPITAL</span>
+        </div>
+        <div class="lh-info">
+          <div>[ADDRESS_LINE_1] <span class="placeholder">UPDATE</span></div>
+          <div>[CITY, STATE, ZIP]</div>
+          <div>[EMAIL@ARBCAPITAL.XYZ]</div>
+          <div>[ARBCAPITAL.XYZ]</div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="lh-body">
+        <div class="lh-date">[DATE]</div>
+        <div class="lh-recipient">
+          <div>[Recipient Name]</div>
+          <div>[Title]</div>
+          <div>[Company]</div>
+          <div>[Address]</div>
+        </div>
+
+        <div class="lh-content">
+          <p>Dear [Recipient],</p>
+          <p>Thank you for your interest in Arb Capital. We are pleased to provide you with [purpose of letter — investment materials, partnership proposal, follow-up from meeting, etc.].</p>
+          <p>Arb Capital operates professionally managed DeFi yield vaults built on the ERC-4626 standard. Our infrastructure is fully audited, our strategies are actively managed by former MakerDAO core engineers, and all positions are verifiable on-chain.</p>
+          <p>[Continue with specific content relevant to the correspondence.]</p>
+          <p>We welcome the opportunity to discuss this further at your convenience.</p>
+          <p>Regards,</p>
+        </div>
+
+        <div class="lh-signature">
+          <div class="sig-line"></div>
+          <div class="sig-name">[Full Name]</div>
+          <div class="sig-title">[TITLE] // ARB CAPITAL</div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="lh-footer">
+        <p>&copy; 2026 Arb Capital. All rights reserved. This document is confidential and intended solely for the named recipient. Not financial advice. Past performance does not guarantee future results.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     TEMPLATE 2: ONE-PAGER
+     ═══════════════════════════════════════ -->
+<div class="template-section" id="one-pager">
+  <div class="template-label">
+    <span>[ 02 ]</span>
+    <span class="divider"></span>
+    <span>ONE_PAGER</span>
+  </div>
+
+  <div class="paper">
+    <div class="one-pager">
+      <!-- Header -->
+      <div class="op-header">
+        <div class="op-header-left">
+          <img src="assets/logo-gold.svg" alt="Arb Capital">
+          <span class="op-title">ARB CAPITAL</span>
+        </div>
+        <div class="op-header-right">
+          INVESTOR_OVERVIEW<br>
+          CONFIDENTIAL // 2026
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <div class="op-hero">
+        <h1>Institutional DeFi yield.<br><span>Real alpha.</span></h1>
+        <p>Professionally managed ERC-4626 vaults delivering consistent, risk-adjusted yield. Built by ex-MakerDAO engineers.</p>
+      </div>
+
+      <!-- Two-column content -->
+      <div class="op-grid">
+        <!-- Left: Metrics + About -->
+        <div>
+          <div class="op-metrics">
+            <div class="op-metric">
+              <div class="bracket-corner bl-tl"></div>
+              <div class="bracket-corner bl-tr"></div>
+              <div class="bracket-corner bl-br"></div>
+              <div class="bracket-corner bl-bl"></div>
+              <div class="m-label">TVL</div>
+              <div class="m-value">$XX M <span class="placeholder">UPDATE</span></div>
+            </div>
+            <div class="op-metric">
+              <div class="bracket-corner bl-tl"></div>
+              <div class="bracket-corner bl-tr"></div>
+              <div class="bracket-corner bl-br"></div>
+              <div class="bracket-corner bl-bl"></div>
+              <div class="m-label">AVG_APY</div>
+              <div class="m-value">XX% <span class="placeholder">UPDATE</span></div>
+            </div>
+            <div class="op-metric">
+              <div class="bracket-corner bl-tl"></div>
+              <div class="bracket-corner bl-tr"></div>
+              <div class="bracket-corner bl-br"></div>
+              <div class="bracket-corner bl-bl"></div>
+              <div class="m-label">VAULTS</div>
+              <div class="m-value">X</div>
+            </div>
+            <div class="op-metric">
+              <div class="bracket-corner bl-tl"></div>
+              <div class="bracket-corner bl-tr"></div>
+              <div class="bracket-corner bl-br"></div>
+              <div class="bracket-corner bl-bl"></div>
+              <div class="m-label">UPTIME</div>
+              <div class="m-value">100%</div>
+            </div>
+          </div>
+
+          <div class="op-section">
+            <div class="s-label">ABOUT</div>
+            <p>Arb Capital builds and manages institutional-grade DeFi yield infrastructure. Our ERC-4626 vaults deploy capital across audited strategies on Ethereum and L2 networks. Founded by former MakerDAO core engineers, we combine deep protocol expertise with institutional risk management.</p>
+          </div>
+
+          <div class="op-section">
+            <div class="s-label">SUPPORTED_ASSETS</div>
+            <p style="color: var(--color-text-primary);">USDC, USDT, DAI, ETH, WBTC</p>
+            <p style="margin-top: 4px;">Ethereum, Arbitrum, Base</p>
+          </div>
+        </div>
+
+        <!-- Right: What + Why + Contact -->
+        <div>
+          <div class="op-section">
+            <div class="s-label">WHAT_WE_DO</div>
+            <h3>Managed DeFi Yield Vaults</h3>
+            <p>Each vault targets a specific risk-return profile across curated DeFi strategies. Deposits and withdrawals happen on-chain via the ERC-4626 standard — no custody risk, full transparency.</p>
+          </div>
+
+          <div class="op-section">
+            <div class="s-label">WHY_ARB_CAPITAL</div>
+            <h3>Protocol-native expertise</h3>
+            <p>Our team built and maintained core DeFi infrastructure managing billions in TVL. Every vault is independently audited. Automated risk management with circuit breakers and exposure limits. Real-time on-chain reporting.</p>
+          </div>
+
+          <div class="op-section">
+            <div class="s-label">CONTACT</div>
+            <div style="font-size: 13px; line-height: 2;">
+              <div>[email@arbcapital.xyz] <span class="placeholder">UPDATE</span></div>
+              <div>[arbcapital.xyz] <span class="placeholder">UPDATE</span></div>
+              <div>[Twitter/X handle] <span class="placeholder">UPDATE</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="op-footer">
+        <p>&copy; 2026 Arb Capital. All rights reserved. This document is confidential and intended solely for accredited investors. Not financial advice. Past performance does not guarantee future results. DeFi protocols carry inherent risks including smart contract vulnerabilities and market volatility.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

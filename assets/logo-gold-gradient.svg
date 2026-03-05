@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" fill="none">
+<path d="M 134.07,19.18 C 131.86,15.09 129.34,15 126.96,15 C 124.58,15 122.11,15.31 119.81,19.18 L 5.78,233.28 C 4.17,236.38 5.17,240.99 10.02,240.99 H 85.78 C 91.91,240.99 95.47,234.98 96.39,233.09 L 136.48,158.41 H 93.41 L 127.23,94.51 L 202.81,233.09 C 205.61,238.14 207.73,240.43 211.58,240.43 H 246.09 C 250.68,240.43 252.11,236.11 250.22,232.64 L 134.07,19.18 Z" fill="url(#goldGrad)"/>
+<defs>
+<linearGradient id="goldGrad" x1="127.89" y1="15" x2="127.89" y2="240.99" gradientUnits="userSpaceOnUse">
+<stop stop-color="#D4AF37"/>
+<stop offset="1" stop-color="#C5A55A"/>
+</linearGradient>
+</defs>
+</svg>
