@@ -18,6 +18,8 @@
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: none;
   }
 
   /* ── Slide System ── */
@@ -32,8 +34,65 @@
     position: relative;
     overflow: hidden;
     scroll-snap-align: start;
+    scroll-snap-stop: always;
     flex-shrink: 0;
   }
+
+  /* ── Slide Content Entrance Animations ── */
+  .slide h2,
+  .slide .content-grid,
+  .slide .content-grid-3,
+  .slide .team-grid,
+  .slide .metric-card,
+  .slide .point,
+  .slide > p,
+  .slide > div:not(.bl):not(.br):not(.slide-number):not(.slide-logo):not(.slide-footer) {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .slide.in-view h2,
+  .slide.in-view .content-grid,
+  .slide.in-view .content-grid-3,
+  .slide.in-view .team-grid,
+  .slide.in-view .metric-card,
+  .slide.in-view .point,
+  .slide.in-view > p,
+  .slide.in-view > div:not(.bl):not(.br):not(.slide-number):not(.slide-logo):not(.slide-footer) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger child animations */
+  .slide.in-view h2 { transition-delay: 0.05s; }
+  .slide.in-view > p { transition-delay: 0.12s; }
+  .slide.in-view .content-grid,
+  .slide.in-view .content-grid-3,
+  .slide.in-view .team-grid { transition-delay: 0.18s; }
+  .slide.in-view .point:nth-child(1) { transition-delay: 0.15s; }
+  .slide.in-view .point:nth-child(2) { transition-delay: 0.22s; }
+  .slide.in-view .metric-card:nth-child(1) { transition-delay: 0.15s; }
+  .slide.in-view .metric-card:nth-child(2) { transition-delay: 0.22s; }
+  .slide.in-view .metric-card:nth-child(3) { transition-delay: 0.29s; }
+
+  /* Cover slide — different animation (fade up from bottom) */
+  .slide-cover h1,
+  .slide-cover .tagline,
+  .slide-cover .cover-logo,
+  .slide-cover .cover-date {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .slide-cover.in-view .cover-logo { opacity: 1; transform: translateY(0); transition-delay: 0s; }
+  .slide-cover.in-view .cover-date { opacity: 1; transform: translateY(0); transition-delay: 0.08s; }
+  .slide-cover.in-view h1 { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+  .slide-cover.in-view .tagline { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
+
+  /* Ask slide — match cover treatment */
+  .slide-ask.in-view > div[style*="text-align: center"] { transition-delay: 0.35s; }
 
   .slide-number {
     position: absolute;
@@ -268,6 +327,7 @@
       overflow-x: hidden;
       overflow-y: auto;
       scroll-snap-type: y mandatory;
+      overscroll-behavior-y: contain;
       height: auto;
     }
 
@@ -995,6 +1055,27 @@
 var current = 0;
 var slides = document.querySelectorAll('.slide');
 var counter = document.getElementById('nav-counter');
+
+// IntersectionObserver — triggers in-view class + updates nav counter
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      var idx = Array.prototype.indexOf.call(slides, entry.target);
+      if (idx !== -1) {
+        current = idx;
+        counter.textContent = (current + 1) + ' / ' + slides.length;
+      }
+    } else {
+      entry.target.classList.remove('in-view');
+    }
+  });
+}, { threshold: 0.55 });
+
+slides.forEach(function(slide) { observer.observe(slide); });
+
+// Mark first slide immediately visible
+slides[0].classList.add('in-view');
 
 function navigate(dir) {
   current += dir;
